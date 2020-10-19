@@ -31,9 +31,9 @@ void compute(T res[N], const S lhs[N], const S rhs[N]) {
 
 extern "C"
 void kernel(t_vecType* res, const t_vecType *lhs, const t_vecType *rhs, int n) {
-#pragma HLS INTERFACE m_axi port=lhs offset=slave bundle=gmem0 depth=1000
-#pragma HLS INTERFACE m_axi port=rhs offset=slave bundle=gmem1 depth=1000
-#pragma HLS INTERFACE m_axi port=res offset=slave bundle=gmem2 depth=1000
+#pragma HLS INTERFACE m_axi port=lhs offset=slave bundle=gmem0 depth=64
+#pragma HLS INTERFACE m_axi port=rhs offset=slave bundle=gmem1 depth=64
+#pragma HLS INTERFACE m_axi port=res offset=slave bundle=gmem2 depth=64
 
   for(int i = 0; i < n; ++i) {
     t_vecType lhs_buf[BATCH_SIZE];
